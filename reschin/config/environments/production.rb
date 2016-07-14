@@ -12,7 +12,6 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
@@ -55,7 +54,6 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "reschin_#{Rails.env}"
-  config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

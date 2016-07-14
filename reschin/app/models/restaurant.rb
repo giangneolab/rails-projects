@@ -16,6 +16,8 @@
 #
 
 class Restaurant < ActiveRecord::Base
+  after_create :send_new_restaurant_notifier
+
   has_many :cat_res
   has_many :categories, through: :cat_res
 
@@ -27,4 +29,8 @@ class Restaurant < ActiveRecord::Base
 
   validates :name, uniqueness: { scope: :location_id,
                                  message: "A location should not have two duplicated restaurants" }
+
+  def send_new_restaurant_notifier
+    Notifier.new_restaurant_notifier(User.first, self).deliver_now
+  end
 end
